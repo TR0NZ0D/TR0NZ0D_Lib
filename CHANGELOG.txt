@@ -1,0 +1,7 @@
+Change Log
+==========
+
+0.0.4 (16/05/2021)
+-------------------
+- Classes input managements update.
+- Minors updates.
