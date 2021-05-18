@@ -36,7 +36,7 @@ def apenas_numeros(cnpj):
 
 def eh_sequencia(cnpj):
     cnpj = str(cnpj)
-    sequencia = cnpj[0] * len(cnpj)
+    sequencia = cnpj[0] * len(str(cnpj))
     if sequencia == cnpj:
         return True
     else:
@@ -69,11 +69,12 @@ class CNPJ:
         pass
 
     def gerar(self) -> str:
-        """
-Gera um CNPJ aleatório
+        """Gera um CNPJ aleatório.
 
-:return: O CNPJ não formatado
-:rtype: str
+        Returns
+        -----------
+        cnpj: :class:`str`
+            O CNPJ não formatado.
         """
         primeiro_digito = randint(0, 9)
         segundo_digito = randint(0, 9)
@@ -90,32 +91,41 @@ Gera um CNPJ aleatório
 
 
     def formatar(self, cnpj: str) -> str:
-        """
-Formata um cnpj para conter os caracteres de divisão
+        """Formata um CNPJ para conter os caracteres de divisão.
 
-:param cnpj: CNPJ a ser formatado
-:type cnpj: str
+        Parâmetros
+        -----------
+        cnpj: :class:`str`
+            CNPJ a ser formatado.
 
-:return: O CNPJ formatado ou None caso ocorra algum erro
-:rtype: str ou None
+        Returns
+        -----------
+        cnpj: :class:`str`
+            O CNPJ formatado.
+        
+        Raises
+        -----------
+        ValueError
+            Se o CNPJ passado não tiver um comprimento de 14 caracteres.
         """
         cnpj = str(cnpj)
-        if len(cnpj) != 14:
-            return None
 
         cnpj = apenas_numeros(cnpj)
+
+        if len(str(cnpj)) != 14:
+            raise ValueError('CNPJ deve conter um comprimento de 14 caracteres.')
 
         formatado = f'{cnpj[:2]}.{cnpj[2:5]}.{cnpj[5:8]}/{cnpj[8:12]}-{cnpj[12:14]}'
         return formatado
 
     def gerar_formatado(self):
-        """
-Gera um CNPJ aleatório
+        """Gera um CNPJ aleatório e retorna já formatado.
 
-:return: O CNPJ formatado
-:rtype: str
+        Returns
+        -----------
+        cnpj: :class:`str`
+            O CNPJ criado e formatado.
         """
-
         cnpj = self.gerar()
         cnpj_formatado = self.formatar(cnpj)
         
@@ -123,14 +133,17 @@ Gera um CNPJ aleatório
 
 
     def validar(self, cnpj: str) -> bool:
-        """
-Verifica a autenticidade matemática do CNPJ
+        """Verifica a autenticidade matemática do CNPJ.
 
-:param cnpj: CNPJ a ser validado
-:type cnpj: str
+        Parâmetros
+        -----------
+        cnpj: :class:`str`
+            CNPJ a ser validado.
 
-:return: True (valido) ou False (inválido)
-:rtype: bool
+        Returns
+        -----------
+        valido: :class:`bool`
+            Retorn `True` caso o CNPJ for válido, caso contrário, `False`.
         """
         cnpj = str(cnpj)
         cnpj = apenas_numeros(cnpj)

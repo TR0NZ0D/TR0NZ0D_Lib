@@ -13,3 +13,4 @@ Modulo contendo ferramentas.
 # Imports
 from .cnpj import CNPJ
 from .cpf import CPF
+from .text import TextFormat

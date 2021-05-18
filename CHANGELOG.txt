@@ -1,7 +1,20 @@
-Change Log
-==========
+<h1> Change Log </h1>
+<hr>
 
-0.0.4 (16/05/2021)
--------------------
-- Classes input managements update.
-- Minors updates.
+<h5> 0.0.8 (17/05/2021) </h5>
+
+<h4> NEW DEPENDENCY </h4>
+- cryptography
+
+<h4> NEW TOOLS </h4>
+- Tools for encryption management.<br>
+- Tool for creating complex codes and passwords.<br>
+- Tool for encapsulating texts with special characters.<br>
+
+<h4> UPDATES </h4>
+- Description file extension changed to .md<br>
+- Changed the description of the library<br>
+- Updated code documentation<br>
+- Created a brief documentation in the description of the library (Official documentation still under development)<br>
+
+<hr>

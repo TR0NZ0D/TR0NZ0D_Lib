@@ -38,11 +38,12 @@ class CPF:
         pass
 
     def gerar(self) -> str:
-        """
-Gera um CPF aleatório
+        """Gera um CPF aleatório.
 
-:return: O CPF não formatado
-:rtype: str
+        Returns
+        -----------
+        cpf: :class:`str`
+            O CPF não formatado.
         """
         numero = str(randint(100000000, 999999999))
         novo_cpf = numero
@@ -68,51 +69,63 @@ Gera um CPF aleatório
         return novo_cpf
 
     def formatar(self, cpf: str) -> str:
-        """
-Formata um CPF para conter os caracteres de divisão
+        """Formata um CPF para conter os caracteres de divisão.
 
-:param cpf: CPF a ser formatado
-:type cpf: str
+        Parâmetros
+        -----------
+        cpf: :class:`str`
+            CPF a ser formatado.
 
-:return: O CPF formatado ou None caso ocorra algum erro
-:rtype: str ou None
+        Returns
+        -----------
+        cpf: :class:`str`
+            O CPF formatado.
+        
+        Raises
+        -----------
+        ValueError
+            Se o CPF passado não tiver um comprimento de 14 caracteres.
         """
         cpf = str(cpf)
-        if len(str(cpf)) != 11:
-            return None
 
         cpf = apenas_numeros(cpf)
+
+        if len(str(cpf)) != 11:
+            raise ValueError('CPF deve conter um comprimento de 14 caracteres.')
 
         formatado = f'{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:11]}'
         return formatado
 
     def gerar_formatado(self):
-        """
-Gera um CNPJ aleatório
+        """Gera um CPF aleatório e retorna já formatado.
 
-:return: O CNPJ formatado
-:rtype: str
+        Returns
+        -----------
+        cpf: :class:`str`
+            O CPF criado e formatado.
         """
-
         cpf = self.gerar()
         cpf_formatado = self.formatar(cpf)
         
         return cpf_formatado
 
     def validar(self, cpf: str) -> bool:
-        """
-Verifica a autenticidade matemática do CPF
+        """Verifica a autenticidade matemática do CPF.
 
-:param cpf: CPF a ser validado
-:type cpf: str
+        Parâmetros
+        -----------
+        cpf: :class:`str`
+            CPF a ser validado.
 
-:return: True (valido) ou False (inválido)
-:rtype: bool
+        Returns
+        -----------
+        valido: :class:`bool`
+            Retorn `True` caso o CPF for válido, caso contrário, `False`.
         """
         cpf = str(cpf)
         cpf = sub(r'[^0-9]', '', cpf)
 
-        if not cpf.isnumeric() or not len(cpf) == 11:
+        if not cpf.isnumeric() or not len(str(cpf)) == 11:
             return False
         else:
             cpf_original = cpf[:-2]
