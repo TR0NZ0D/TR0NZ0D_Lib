@@ -75,12 +75,12 @@ class Pass():
 
     def gerar(self, lenght: int) -> str:
         """Cria uma senha com um comprimento passado.\n
-        [Esses dados não são armazenados em nenhum local.]
+        [Os dados gerados não são armazenados em nenhum local.]
 
         Parâmetros
         -----------
         lenght: :class:`int`
-            Tamanho da senha.
+            Tamanho da senha ou código a ser gerado.
 
         Returns
         -----------
@@ -90,7 +90,7 @@ class Pass():
         Raises
         -----------
         ValueError
-            Se o comprimento não for um número inteiro válido.
+            Se o comprimento passado não for um número inteiro válido.
         """
         if type(lenght) != int:
             try:
@@ -111,4 +111,4 @@ class Pass():
 
         key = create_key(caracteres_1, caracteres_2, caracteres_3, lenght)
 
-        print(key)
+        return key

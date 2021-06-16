@@ -1,20 +1,9 @@
-<h1> Change Log </h1>
-<hr>
+# Change Log
 
-<h5> 0.0.8 (17/05/2021) </h5>
+***
 
-<h4> NEW DEPENDENCY </h4>
-- cryptography
+> [PT-BR](https://tr0nz0d.github.io/pages/projetos/projeto/libs/docs/pages/changelog.html)
 
-<h4> NEW TOOLS </h4>
-- Tools for encryption management.<br>
-- Tool for creating complex codes and passwords.<br>
-- Tool for encapsulating texts with special characters.<br>
+***
 
-<h4> UPDATES </h4>
-- Description file extension changed to .md<br>
-- Changed the description of the library<br>
-- Updated code documentation<br>
-- Created a brief documentation in the description of the library (Official documentation still under development)<br>
-
-<hr>
+> EN-US [Coming Soon]

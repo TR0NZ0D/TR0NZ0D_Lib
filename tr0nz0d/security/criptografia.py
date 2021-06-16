@@ -57,7 +57,7 @@ class Criptografia():
         return [text_criptografada, self.key]
 
     def descriptografar(self, text: bytes) -> str:
-        """Descriptografa o conteúdo passado e retorna o texto literal.
+        """Descriptografa o conteúdo passado com a chave armazenada e retorna o texto literal.
 
         Parâmetros
         -----------
@@ -66,13 +66,13 @@ class Criptografia():
 
         Returns
         -----------
-        text: :class:`txt`
-            O texto literal descriptografado.
+        text: :class:`str`
+            
 
         Raises
         -----------
         InvalidToken
-            Se o token passado não for válido para a descriptografia.
+            Se a chave armazenada não for válida para a descriptografia do texto passado.
         """
         if type(text) != bytes:
             text = str(text)
@@ -84,7 +84,7 @@ class Criptografia():
         return text_txt
 
     def descriptografar_com_chave(self, text: bytes, custom_key: bytes) -> str:
-        """Descriptografa o conteúdo passado utilizando a chave disponibilizada e retorna o texto literal.
+        """Descriptografa o texto passado utilizando a chave disponibilizada e retorna o texto literal.
 
         Parâmetros
         -----------
@@ -101,7 +101,7 @@ class Criptografia():
         Raises
         -----------
         InvalidToken
-            Se o token passado não for válido para a descriptografia.
+            Se a chave passada não for válida para a descriptografia do texto.
         """
         if type(text) != bytes:
             text = str(text)
@@ -113,14 +113,7 @@ class Criptografia():
         return text_txt
 
     def get_key(self) -> bytes:
-        """Retorna a chave de criptografia utilizada caso tenha perdido.
-
-        Parâmetros
-        -----------
-        text: :class:`bytes`
-            Texto criptografado a ser desencriptado.
-        custom_key: :class:`bytes`
-            A chave que criptografou o texto.
+        """Retorna a chave de criptografia armazenada caso tenha perdido. Essa chave é alterada a cada utilização do método `criptografar`.
 
         Returns
         -----------

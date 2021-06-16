@@ -84,14 +84,14 @@ class CPF:
         Raises
         -----------
         ValueError
-            Se o CPF passado não tiver um comprimento de 14 caracteres.
+            Se o CPF passado não tiver um comprimento de 11 caracteres.
         """
         cpf = str(cpf)
 
         cpf = apenas_numeros(cpf)
 
         if len(str(cpf)) != 11:
-            raise ValueError('CPF deve conter um comprimento de 14 caracteres.')
+            raise ValueError('CPF deve conter um comprimento de 11 caracteres.')
 
         formatado = f'{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:11]}'
         return formatado

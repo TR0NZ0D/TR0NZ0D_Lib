@@ -13,7 +13,7 @@ requirements = [
 
 setup(
     name='tr0nz0d',
-    version='0.0.8',
+    version='0.0.9',
     description='Ferramentas e métodos úteis',
     long_description=open('README.md').read() + '\n\n' + open('CHANGELOG.txt').read(),
     long_description_content_type="text/markdown",
