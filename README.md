@@ -8,8 +8,8 @@ TR0NZ0D Lib is a library created in python to facilitate the use of some tools. 
 
 ## Documentation
 
-> [PT-BR](https://tr0nz0d.github.io/pages/projetos/projeto/libs/docs/lib-index.html)
+> [pt-br](https://tr0nz0d.github.io/pages/projetos/projeto/libs/docs/lib-index.html)
 
 ***
 
-> EN-US [Coming Soon]
+> en-us [Coming Soon]
