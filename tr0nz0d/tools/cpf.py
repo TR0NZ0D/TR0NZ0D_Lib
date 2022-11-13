@@ -30,13 +30,10 @@ from re import sub
 
 def apenas_numeros(cpf):
     cpf = str(cpf)
-    return sub(r'[^0-9]', '', cpf)
+    return sub(r'\D', '', cpf)
 
 
 class CPF:
-    def __init__(self) -> None:
-        pass
-
     def gerar(self) -> str:
         """Gera um CPF aleatório.
 
@@ -74,13 +71,13 @@ class CPF:
         Parâmetros
         -----------
         cpf: :class:`str`
-            CPF a ser formatado.
+            CPF que deve ser formatado.
 
         Returns
         -----------
         cpf: :class:`str`
             O CPF formatado.
-        
+
         Raises
         -----------
         ValueError
@@ -97,7 +94,7 @@ class CPF:
         return formatado
 
     def gerar_formatado(self):
-        """Gera um CPF aleatório e retorna já formatado.
+        """Gera um CPF aleatório e o retorna já formatado.
 
         Returns
         -----------
@@ -106,26 +103,26 @@ class CPF:
         """
         cpf = self.gerar()
         cpf_formatado = self.formatar(cpf)
-        
+
         return cpf_formatado
 
     def validar(self, cpf: str) -> bool:
-        """Verifica a autenticidade matemática do CPF.
+        """Verifica a autenticidade matemática de um CPF.
 
         Parâmetros
         -----------
         cpf: :class:`str`
-            CPF a ser validado.
+            CPF que deve ser validado.
 
         Returns
         -----------
-        valido: :class:`bool`
-            Retorn `True` caso o CPF for válido, caso contrário, `False`.
+        válido: :class:`bool`
+            `True` caso o CPF for válido, caso contrário, `False`.
         """
         cpf = str(cpf)
-        cpf = sub(r'[^0-9]', '', cpf)
+        cpf = sub(r'\D', '', cpf)
 
-        if not cpf.isnumeric() or not len(str(cpf)) == 11:
+        if not cpf.isnumeric() or len(str(cpf)) != 11:
             return False
         else:
             cpf_original = cpf[:-2]

@@ -24,17 +24,18 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
-from re import sub
 from random import randint
+from re import sub
 
 REGRESSIVOS = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
 
-def apenas_numeros(cnpj):
+
+def _apenas_numeros(cnpj) -> str:
     cnpj = str(cnpj)
-    return sub(r'[^0-9]', '', cnpj)
+    return sub(r'\D', '', cnpj)
 
 
-def eh_sequencia(cnpj):
+def _eh_sequencia(cnpj) -> bool:
     cnpj = str(cnpj)
     sequencia = cnpj[0] * len(str(cnpj))
     if sequencia == cnpj:
@@ -43,7 +44,7 @@ def eh_sequencia(cnpj):
         return False
 
 
-def calcula_digito(cnpj, digito):
+def _calcula_digito(cnpj, digito) -> str:
     cnpj = str(cnpj)
     if digito == 1:
         regressivos = REGRESSIVOS[1:]
@@ -53,7 +54,7 @@ def calcula_digito(cnpj, digito):
         regressivos = REGRESSIVOS
         novo_cnpj = cnpj
     else:
-        return None
+        return "99999999999999"
 
     total = 0
     for indice, regressivo in enumerate(regressivos):
@@ -64,10 +65,8 @@ def calcula_digito(cnpj, digito):
 
     return f'{novo_cnpj}{digito}'
 
-class CNPJ:
-    def __init__(self) -> None:
-        pass
 
+class CNPJ:
     def gerar(self) -> str:
         """Gera um CNPJ aleatório.
 
@@ -84,11 +83,10 @@ class CNPJ:
 
         inicio_cnpj = f'{primeiro_digito}{segundo_digito}{segundo_bloco}{terceiro_bloco}{quarto_bloco}00'
 
-        novo_cnpj = calcula_digito(cnpj=inicio_cnpj, digito=1)
-        novo_cnpj = calcula_digito(cnpj=novo_cnpj, digito=2)
+        novo_cnpj = _calcula_digito(cnpj=inicio_cnpj, digito=1)
+        novo_cnpj = _calcula_digito(cnpj=novo_cnpj, digito=2)
 
         return novo_cnpj
-
 
     def formatar(self, cnpj: str) -> str:
         """Formata um CNPJ para conter os caracteres de divisão.
@@ -96,13 +94,13 @@ class CNPJ:
         Parâmetros
         -----------
         cnpj: :class:`str`
-            CNPJ a ser formatado.
+            CNPJ que deve ser formatado.
 
         Returns
         -----------
         cnpj: :class:`str`
             O CNPJ formatado.
-        
+
         Raises
         -----------
         ValueError
@@ -110,7 +108,7 @@ class CNPJ:
         """
         cnpj = str(cnpj)
 
-        cnpj = apenas_numeros(cnpj)
+        cnpj = _apenas_numeros(cnpj)
 
         if len(str(cnpj)) != 14:
             raise ValueError('CNPJ deve conter um comprimento de 14 caracteres.')
@@ -119,7 +117,7 @@ class CNPJ:
         return formatado
 
     def gerar_formatado(self):
-        """Gera um CNPJ aleatório e retorna já formatado.
+        """Gera um CNPJ aleatório e o retorna já formatado.
 
         Returns
         -----------
@@ -128,9 +126,8 @@ class CNPJ:
         """
         cnpj = self.gerar()
         cnpj_formatado = self.formatar(cnpj)
-        
-        return cnpj_formatado
 
+        return cnpj_formatado
 
     def validar(self, cnpj: str) -> bool:
         """Verifica a autenticidade matemática do CNPJ.
@@ -138,22 +135,22 @@ class CNPJ:
         Parâmetros
         -----------
         cnpj: :class:`str`
-            CNPJ a ser validado.
+            CNPJ que deve ser validado.
 
         Returns
         -----------
         valido: :class:`bool`
-            Retorn `True` caso o CNPJ for válido, caso contrário, `False`.
+            `True` caso o CNPJ for válido, caso contrário, `False`.
         """
         cnpj = str(cnpj)
-        cnpj = apenas_numeros(cnpj)
+        cnpj = _apenas_numeros(cnpj)
 
         try:
-            if eh_sequencia(cnpj):
+            if _eh_sequencia(cnpj):
                 return False
 
-            novo_cnpj = calcula_digito(cnpj=cnpj, digito=1)
-            novo_cnpj = calcula_digito(cnpj=novo_cnpj, digito=2)
+            novo_cnpj = _calcula_digito(cnpj=cnpj, digito=1)
+            novo_cnpj = _calcula_digito(cnpj=novo_cnpj, digito=2)
         except Exception as e:
             print(e)
             return False
@@ -162,6 +159,3 @@ class CNPJ:
             return True
         else:
             return False
-
-
-        

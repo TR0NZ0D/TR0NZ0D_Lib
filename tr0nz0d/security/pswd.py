@@ -24,24 +24,25 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
-from random import randint, choices, shuffle, choice
+from random import randint, choices, shuffle
 
-numeros = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50']
-letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'ç', 'Ç']
-simbolos = ['"', "'", '\\', '/', '*', '-', '+', '!', '@', '#', '$', '%', '¨', '&', '(', ')', '{', '}', '[', ']', '`', '´', '~', '^', '?', '°', '₢', '•', '→', '←', '◄', '►']
+_numeros = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50']
+_letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'ç', 'Ç']
+_simbolos = ['"', "'", '\\', '/', '*', '-', '+', '!', '@', '#', '$', '%', '¨', '&', '(', ')', '{', '}', '[', ']', '`', '´', '~', '^', '?', '°', '₢', '•', '→', '←', '◄', '►']
 
-def select_char() -> str:
+
+def _select_char() -> str:
     shuffle_val_init = randint(1, 5)
     shuffle_val_end = randint(6, 9)
 
     for _ in range(shuffle_val_init, shuffle_val_end):
-        shuffle(numeros)
-        shuffle(letras)
-        shuffle(simbolos)
+        shuffle(_numeros)
+        shuffle(_letras)
+        shuffle(_simbolos)
 
-    num = choices(numeros, k=5)
-    let = choices(letras, k=5)
-    sim = choices(simbolos, k=5)
+    num = choices(_numeros, k=5)
+    let = choices(_letras, k=5)
+    sim = choices(_simbolos, k=5)
 
     sequence = [f'{num[randint(0, 4)]}', f'{let[randint(0, 4)]}', f'{sim[randint(0, 4)]}']
 
@@ -50,14 +51,15 @@ def select_char() -> str:
         shuffle(sequence)
 
     char = sequence[randint(0, 2)]
-    
+
     return char
 
-def create_key(list1: list, list2: list, list3: list, lenght: int) -> str:
+
+def _create_key(list1: list, list2: list, list3: list, lenght: int) -> str:
     min_index = 0
     max_index = lenght - 1
     key = ''
-    char_lists=[list1, list2, list3]
+    char_lists = [list1, list2, list3]
     for _ in range(lenght):
         shuffle(char_lists[0])
         shuffle(char_lists[1])
@@ -70,23 +72,20 @@ def create_key(list1: list, list2: list, list3: list, lenght: int) -> str:
 
 
 class Pass():
-    def __init__(self) -> None:
-        pass
-
     def gerar(self, lenght: int) -> str:
-        """Cria uma senha com um comprimento passado.\n
-        [Os dados gerados não são armazenados em nenhum local.]
+        """ Cria uma senha com um comprimento passado.\n
+        [Os dados gerados não são armazenados em nenhum local]
 
         Parâmetros
         -----------
         lenght: :class:`int`
-            Tamanho da senha ou código a ser gerado.
+            Tamanho da senha ou código que deve ser gerado.
 
         Returns
         -----------
         pass: :class:`str`
             A senha criada em texto literal.
-        
+
         Raises
         -----------
         ValueError
@@ -102,13 +101,13 @@ class Pass():
         caracteres_2 = []
         caracteres_3 = []
         for _ in range(lenght):
-            caractere_1 = select_char()
+            caractere_1 = _select_char()
             caracteres_1.append(caractere_1)
-            caractere_2 = select_char()
+            caractere_2 = _select_char()
             caracteres_2.append(caractere_2)
-            caractere_3 = select_char()
+            caractere_3 = _select_char()
             caracteres_3.append(caractere_3)
 
-        key = create_key(caracteres_1, caracteres_2, caracteres_3, lenght)
+        key = _create_key(caracteres_1, caracteres_2, caracteres_3, lenght)
 
         return key

@@ -24,12 +24,10 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
-class TextFormat():
-    def __init__(self) -> None:
-        pass
 
+class TextFormat():
     def line_print(self, text: str, char_tl: str, char_md: str, char_tr: str, char_sides: str, char_bl: str, char_br: str) -> None:
-        """Imprime na tela o texto encapsulado no caractere desejado.
+        """Imprime na tela um texto encapsulado no caractere desejado.
 
         Este método deve ser utilizado apenas para impressão de uma única linha,
         para multiplas linhas, utilize o método `text_print`.
@@ -63,11 +61,11 @@ class TextFormat():
         char_tl, char_md, char_tr, char_sides, char_bl, char_br = str(char_tl), str(char_md), str(char_tr), str(char_sides), str(char_bl), str(char_br)
 
         qtd = len(text) + 4
-        print(f'{char_tl}'+f'{char_md}'*qtd+f'{char_tr}')
-        print(f'{char_sides} ' + ' '*(qtd-2) + f' {char_sides}')
+        print(f'{char_tl}' + f'{char_md}' * qtd + f'{char_tr}')
+        print(f'{char_sides} ' + ' ' * (qtd - 2) + f' {char_sides}')
         print(f'{char_sides}  {text}  {char_sides}')
-        print(f'{char_sides} ' + ' '*(qtd-2) + f' {char_sides}')
-        print(f'{char_bl}'+f'{char_md}'*qtd+f'{char_br}')
+        print(f'{char_sides} ' + ' ' * (qtd - 2) + f' {char_sides}')
+        print(f'{char_bl}' + f'{char_md}' * qtd + f'{char_br}')
 
     def text_print(self, texto: str, char_tl: str, char_md: str, char_tr: str, char_sides: str, char_bl: str, char_br: str) -> None:
         """Imprime na tela o texto encapsulado no caractere desejado.
@@ -75,7 +73,7 @@ class TextFormat():
         Parâmetros
         -----------
         texto: :class:`str`
-            O texto a ser encapsulado e impresso. Pode ser utilizado docstrings `'''texto'''` para enviar multiplas linhas.
+            O texto a ser encapsulado e impresso. Pode ser utilizadas docstrings `'''texto'''` para enviar múltiplas linhas.
         char_tl: :class:`str`
             O caractere a ser utilizado no topo esquerdo.
             Ex: `╔`
@@ -112,8 +110,8 @@ class TextFormat():
             for _ in text:
                 qtd = max_lenght + 4
                 if index == 0:
-                    print(f'{char_tl}'+f'{char_md}'*qtd+f'{char_tr}')
-                    print(f'{char_sides} ' + ' '*(qtd-2) + f' {char_sides}')
+                    print(f'{char_tl}' + f'{char_md}' * qtd + f'{char_tr}')
+                    print(f'{char_sides} ' + ' ' * (qtd - 2) + f' {char_sides}')
                 _text = f'{char_sides}  {text[index]}  {char_sides}'
                 _text_len = len(_text)
                 if _text_len < max_lenght + 5:
@@ -124,9 +122,9 @@ class TextFormat():
 
                 print(_text)
                 if index % 2 == 1:
-                    print(f'{char_sides} ' + ' '*(qtd-2) + f' {char_sides}')
+                    print(f'{char_sides} ' + ' ' * (qtd - 2) + f' {char_sides}')
 
                 if index == len(text) - 1:
-                    print(f'{char_sides} ' + ' '*(qtd-2) + f' {char_sides}')
-                    print(f'{char_bl}'+f'{char_md}'*qtd+f'{char_br}')
+                    print(f'{char_sides} ' + ' ' * (qtd - 2) + f' {char_sides}')
+                    print(f'{char_bl}' + f'{char_md}' * qtd + f'{char_br}')
                 index += 1

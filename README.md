@@ -2,14 +2,21 @@
 
 ***
 
-## What is?
+## O que é?
 
-TR0NZ0D Lib is a library created in python to facilitate the use of some tools. The project is still under development, improvements and new features will be added. The main language of the project is portuguese, translations will be added in the future.
+TR0NZ0D Lib é uma biblioteca criada em python para facilitar o uso de algumas ferramentas. O projeto está em versão Beta, melhorias e novas funcionalidades serão adicionadas futuramente.
 
-## Documentation
+O idioma principal da biblioteca é português, traduções serão adicionadas no futuro.
 
-> [pt-br](https://tr0nz0d.github.io/pages/projetos/projeto/libs/docs/lib-index.html)
+## Documentação
 
-***
+* [Português*](https://tr0nz0d.github.io/pages/projetos/projeto/libs/docs/lib-index.html)
 
-> en-us [Coming Soon]
+*Documentação está em processo de migração para o novo domínio, é possível que fique instável e desatualizada por um período de tempo.
+
+## Módulos existentes
+
+* Tools
+* Security
+* Discord
+* Django

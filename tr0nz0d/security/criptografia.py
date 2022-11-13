@@ -26,17 +26,18 @@ DEALINGS IN THE SOFTWARE.
 
 from cryptography.fernet import Fernet
 
-def gen_key():
+
+def _gen_key():
     key = Fernet.generate_key()
     return key
 
+
 class Criptografia():
     def __init__(self) -> None:
-        self.key = gen_key()
+        self.key = _gen_key()
 
-
-    def criptografar(self, text: str) -> list:
-        """Criptografa o conteúdo passado e retorna o conteúdo e a chave.
+    def criptografar(self, text: str) -> list[bytes]:
+        """ Criptografa o conteúdo passado e retorna o conteúdo e a chave.
 
         Parâmetros
         -----------
@@ -48,7 +49,7 @@ class Criptografia():
         [mensagem, chave]: :class:`list`
             Uma lista contendo a mensagem criptografada e a chave.
         """
-        self.key = gen_key()
+        self.key = _gen_key()
         text = str(text)
         text_encode = text.encode()
         f = Fernet(self.key)
@@ -62,21 +63,20 @@ class Criptografia():
         Parâmetros
         -----------
         text: :class:`bytes`
-            Texto criptografado a ser desencriptado.
+            Texto criptografado a ser descriptografado.
 
         Returns
         -----------
         text: :class:`str`
-            
+            O texto literal descriptografado.
 
         Raises
         -----------
         InvalidToken
-            Se a chave armazenada não for válida para a descriptografia do texto passado.
+            Se a chave armazenada não for válida para descriptografar o texto.
         """
         if type(text) != bytes:
-            text = str(text)
-            text = text.encode()
+            text = str(text).encode()
         f = Fernet(self.key)
         text_bytes = f.decrypt(text)
         text_txt = str(text_bytes, "utf-8")
@@ -89,7 +89,7 @@ class Criptografia():
         Parâmetros
         -----------
         text: :class:`bytes`
-            Texto criptografado a ser desencriptado.
+            Texto criptografado a ser descriptografado.
         custom_key: :class:`bytes`
             A chave que criptografou o texto.
 
@@ -97,27 +97,16 @@ class Criptografia():
         -----------
         text: :class:`str`
             O texto literal descriptografado.
-        
+
         Raises
         -----------
         InvalidToken
             Se a chave passada não for válida para a descriptografia do texto.
         """
         if type(text) != bytes:
-            text = str(text)
-            text = text.encode()
+            text = str(text).encode()
         f = Fernet(custom_key)
         text_bytes = f.decrypt(text)
         text_txt = str(text_bytes, "utf-8")
 
         return text_txt
-
-    def get_key(self) -> bytes:
-        """Retorna a chave de criptografia armazenada caso tenha perdido. Essa chave é alterada a cada utilização do método `criptografar`.
-
-        Returns
-        -----------
-        key: :class:`bytes`
-            A chave de criptografia.
-        """
-        return self.key
