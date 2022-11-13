@@ -1,5 +1,5 @@
 import unittest
-from tr0nz0d.django.tools import DjangoTools
+from tr0nz0d.django_tools.tools import DjangoTools
 
 
 class _MockedRequest:

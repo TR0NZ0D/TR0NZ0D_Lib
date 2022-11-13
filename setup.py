@@ -13,7 +13,7 @@ requirements = [
 
 setup(
     name='tr0nz0d',
-    version='0.1.0',
+    version='0.1.4',
     description="TR0NZ0D Lib is a library created in python to facilitate the use of some tools.",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -35,8 +35,8 @@ setup(
         "Topic :: System :: Logging"
     ],
     keywords="tronzod, tr0nz0d, TR0NZ0D, TRONZOD, tools",
-    packages=find_packages(where="tr0nz0d", exclude=["venv"]),
-    package_dir={"": "tr0nz0d"},
+    packages=find_packages(where="src", exclude=["venv"]),
+    package_dir={"": "src"},
     setup_requires=requirements,
     install_requires=requirements,
     tests_require=["unittest"],

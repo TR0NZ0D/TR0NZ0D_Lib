@@ -28,7 +28,7 @@ from random import randint
 from re import sub
 
 
-def apenas_numeros(cpf):
+def _apenas_numeros(cpf):
     cpf = str(cpf)
     return sub(r'\D', '', cpf)
 
@@ -85,7 +85,7 @@ class CPF:
         """
         cpf = str(cpf)
 
-        cpf = apenas_numeros(cpf)
+        cpf = _apenas_numeros(cpf)
 
         if len(str(cpf)) != 11:
             raise ValueError('CPF deve conter um comprimento de 11 caracteres.')

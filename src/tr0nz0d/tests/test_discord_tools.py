@@ -1,5 +1,5 @@
 import unittest
-from tr0nz0d.discord.tools import WebhookTools
+from tr0nz0d.discord_tools.tools import WebhookTools
 
 
 class TestWebhooks(unittest.TestCase):
