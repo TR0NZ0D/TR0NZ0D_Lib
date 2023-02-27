@@ -1,4 +1,4 @@
-name: Pylint Back-end
+name: Pylint
 
 on: [push, pull_request]
 
