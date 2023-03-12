@@ -22,3 +22,5 @@ updates:
       # Separate sections of the branch name with a forward slash
       separator: "/"
     target-branch: "main"
+    reviewers:
+      - "TR0NZ0D"
