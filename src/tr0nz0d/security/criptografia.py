@@ -22,6 +22,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
+
+Created by: Gabriel Menezes de Antonio (TR0NZ0D)
 """
 
 from cryptography.fernet import Fernet
@@ -33,6 +35,7 @@ def _gen_key():
 
 
 class Criptografia():
+    """Ferramentas de criptografia"""
     def __init__(self) -> None:
         self.key = _gen_key()
 
@@ -75,7 +78,7 @@ class Criptografia():
         InvalidToken
             Se a chave armazenada não for válida para descriptografar o texto.
         """
-        if type(text) != bytes:
+        if not isinstance(text, bytes):
             text = str(text).encode()
         f = Fernet(self.key)
         text_bytes = f.decrypt(text)
@@ -84,7 +87,8 @@ class Criptografia():
         return text_txt
 
     def descriptografar_com_chave(self, text: bytes, custom_key: bytes) -> str:
-        """Descriptografa o texto passado utilizando a chave disponibilizada e retorna o texto literal.
+        """Descriptografa o texto passado utilizando a chave disponibilizada e
+        retorna o texto literal.
 
         Parâmetros
         -----------
@@ -103,7 +107,7 @@ class Criptografia():
         InvalidToken
             Se a chave passada não for válida para a descriptografia do texto.
         """
-        if type(text) != bytes:
+        if not isinstance(text, bytes):
             text = str(text).encode()
         f = Fernet(custom_key)
         text_bytes = f.decrypt(text)

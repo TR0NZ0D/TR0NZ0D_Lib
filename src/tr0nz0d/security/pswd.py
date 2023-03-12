@@ -22,13 +22,22 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
+
+Created by: Gabriel Menezes de Antonio (TR0NZ0D)
 """
 
-from random import randint, choices, shuffle
+from random import choices, randint, shuffle
 
-_numeros = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50']
-_letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'ç', 'Ç']
-_simbolos = ['"', "'", '\\', '/', '*', '-', '+', '!', '@', '#', '$', '%', '¨', '&', '(', ')', '{', '}', '[', ']', '`', '´', '~', '^', '?', '°', '₢', '•', '→', '←', '◄', '►']
+_numeros = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13',
+            '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25',
+            '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37',
+            '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50']
+_letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+           'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F',
+           'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+           'W', 'X', 'Y', 'Z', 'ç', 'Ç']
+_simbolos = ['"', "'", '\\', '/', '*', '-', '+', '!', '@', '#', '$', '%', '¨', '&', '(', ')',
+             '{', '}', '[', ']', '`', '´', '~', '^', '?', '°', '₢', '•', '→', '←', '◄', '►']
 
 
 def _select_char() -> str:
@@ -72,6 +81,7 @@ def _create_key(list1: list, list2: list, list3: list, lenght: int) -> str:
 
 
 class Pass():
+    """Ferramentas de senhas e códigos"""
     def gerar(self, lenght: int) -> str:
         """ Cria uma senha com um comprimento passado.\n
         [Os dados gerados não são armazenados em nenhum local]
@@ -91,11 +101,12 @@ class Pass():
         ValueError
             Se o comprimento passado não for um número inteiro válido.
         """
-        if type(lenght) != int:
+        if not isinstance(lenght, int):
             try:
                 lenght = int(lenght)
             except ValueError:
-                raise ValueError('Comprimento da senha não é um número inteiro válido.')
+                lenght = randint(8, 20)
+                print("[ERROR] - Comprimento da senha não é um número inteiro válido.")
 
         caracteres_1 = []
         caracteres_2 = []

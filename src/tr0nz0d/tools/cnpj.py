@@ -22,6 +22,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
+
+Created by: Gabriel Menezes de Antonio (TR0NZ0D)
 """
 
 from random import randint
@@ -38,10 +40,7 @@ def _apenas_numeros(cnpj) -> str:
 def _eh_sequencia(cnpj) -> bool:
     cnpj = str(cnpj)
     sequencia = cnpj[0] * len(str(cnpj))
-    if sequencia == cnpj:
-        return True
-    else:
-        return False
+    return sequencia == cnpj
 
 
 def _calcula_digito(cnpj, digito) -> str:
@@ -67,6 +66,7 @@ def _calcula_digito(cnpj, digito) -> str:
 
 
 class CNPJ:
+    """CNPJ Tools"""
     def gerar(self) -> str:
         """Gera um CNPJ aleatório.
 
@@ -81,7 +81,8 @@ class CNPJ:
         terceiro_bloco = randint(100, 999)
         quarto_bloco = '0001'
 
-        inicio_cnpj = f'{primeiro_digito}{segundo_digito}{segundo_bloco}{terceiro_bloco}{quarto_bloco}00'
+        inicio_cnpj = f'{primeiro_digito}\
+{segundo_digito}{segundo_bloco}{terceiro_bloco}{quarto_bloco}00'
 
         novo_cnpj = _calcula_digito(cnpj=inicio_cnpj, digito=1)
         novo_cnpj = _calcula_digito(cnpj=novo_cnpj, digito=2)
@@ -151,11 +152,9 @@ class CNPJ:
 
             novo_cnpj = _calcula_digito(cnpj=cnpj, digito=1)
             novo_cnpj = _calcula_digito(cnpj=novo_cnpj, digito=2)
-        except Exception as e:
-            print(e)
+        except ValueError:
+            return False
+        except IndexError:
             return False
 
-        if novo_cnpj == cnpj:
-            return True
-        else:
-            return False
+        return novo_cnpj == cnpj

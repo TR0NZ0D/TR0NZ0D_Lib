@@ -22,13 +22,17 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
+
+Created by: Gabriel Menezes de Antonio (TR0NZ0D)
 """
 
-from typing import List, Dict, Optional
+from typing import Dict, List, Optional
+
 import requests
 
 
 class EmbedField:
+    """Creates an EmbedField with informed title and content"""
     title: str
     content: str
 
@@ -57,12 +61,18 @@ class EmbedField:
 
 
 class EmbedData:
+    """Creates an EmbedData with informed title, description and includes EmbedField list
+    if not None"""
     title: str
     description: str
     fields: Optional[List[EmbedField]]
 
-    def __init__(self, title: str, description: str, fields: Optional[List[EmbedField]] = None) -> None:
-        """ Creates an EmbedData with informed title, description and includes EmbedField list if not None
+    def __init__(self,
+                 title: str,
+                 description: str,
+                 fields: Optional[List[EmbedField]] = None) -> None:
+        """ Creates an EmbedData with informed title, description and includes
+        EmbedField list if not None
 
         Args:
             title (str): Embed message title
@@ -95,12 +105,17 @@ class EmbedData:
 
 
 class Data:
+    """Creates a Data with the informed content, username and includes embed messages if not none"""
     content: str
     username: str
     embeds: Optional[List[EmbedData]]
 
-    def __init__(self, content: str, username: str, embed: Optional[List[EmbedData]] = None) -> None:
-        """ Creates a Data with the informed content, username and includes embed messages if not none
+    def __init__(self,
+                 content: str,
+                 username: str,
+                 embed: Optional[List[EmbedData]] = None) -> None:
+        """ Creates a Data with the informed content, username and includes embed
+        messages if not none
 
         Args:
             content (str): Message's main content
@@ -115,7 +130,8 @@ class Data:
         """ Converts stored data to a json serializable dict
 
         Returns:
-            Dict[str, str | List[Dict[str, str | List[Dict[str, str]]]]]: Stored data json serializable dict
+            Dict[str, str | List[Dict[str, str | List[Dict[str, str]]]]]: Stored data
+            json serializable dict
         """
         json_data: Dict[str, str | List[Dict[str, str | List[Dict[str, str]]]]] = {}
 
@@ -134,27 +150,37 @@ class Data:
 
 
 class WebhookTools:
-
-    def build_message_data(self, content: str, username: str, embeds: Optional[List[EmbedData]] = None) -> Data:
-        """ Builds a message data class. Build embed data before if using embeds (build_message_embeds).
+    """Tools for Discord webhooks"""
+    def build_message_data(self,
+                           content: str,
+                           username: str,
+                           embeds: Optional[List[EmbedData]] = None) -> Data:
+        """ Builds a message data class. Build embed data before if using
+        embeds (build_message_embeds).
 
         Args:
             content (str): Message's main content
             username (str): Webhook's display username
-            embeds (List[EmbedData] | None): Optional EmbedData list (build it first). Defaults to None.
+            embeds (List[EmbedData] | None): Optional EmbedData list (build it first).
+            Defaults to None.
 
         Returns:
             Data: Built message Data class
         """
         return Data(content=content, username=username, embed=embeds)
 
-    def build_message_embeds(self, title: str, description: str, fields: Optional[List[EmbedField]] = None) -> EmbedData:
-        """ Builds an EmbedData class. Build embed fields before if using fields (build_embed_fields).
+    def build_message_embeds(self,
+                             title: str,
+                             description: str,
+                             fields: Optional[List[EmbedField]] = None) -> EmbedData:
+        """ Builds an EmbedData class. Build embed fields before if
+        using fields (build_embed_fields).
 
         Args:
             title (str): Embed message's title
             description (str): Embed message's description
-            fields (List[EmbedField] | None): Optional list of embed fields (build it first). Defaults to None.
+            fields (List[EmbedField] | None): Optional list of embed fields
+            (build it first). Defaults to None.
 
         Returns:
             EmbedData: Built EmbedData class
@@ -174,7 +200,8 @@ class WebhookTools:
         return EmbedField(title=title, content=content)
 
     def send_webhook_message(self, url: str, data: Data) -> int:
-        """ Serializes and sends a webhook message using a post method, sending such data. Build message data first (build_message_Data)
+        """ Serializes and sends a webhook message using a post method,
+        sending such data. Build message data first (build_message_Data)
 
         Args:
             url (str): Webhook's URL
@@ -186,7 +213,7 @@ class WebhookTools:
         Returns:
             int: Message's status code
         """
-        post_result = requests.post(url=url, json=data.as_json())
+        post_result = requests.post(url=url, json=data.as_json(), timeout=240)
 
         post_result.raise_for_status()
 

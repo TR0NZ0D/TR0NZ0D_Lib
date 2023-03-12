@@ -22,11 +22,21 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
+
+Created by: Gabriel Menezes de Antonio (TR0NZ0D)
 """
 
 
 class TextFormat():
-    def line_print(self, text: str, char_tl: str, char_md: str, char_tr: str, char_sides: str, char_bl: str, char_br: str) -> None:
+    """Text formatting tools"""
+    def line_print(self,
+                   text: str,
+                   char_tl: str,
+                   char_md: str,
+                   char_tr: str,
+                   char_sides: str,
+                   char_bl: str,
+                   char_br: str) -> None:
         """Imprime na tela um texto encapsulado no caractere desejado.
 
         Este método deve ser utilizado apenas para impressão de uma única linha,
@@ -55,10 +65,15 @@ class TextFormat():
             O caractere a ser utilizado na base direita.
             Ex: `╝`
         """
-        if type(text) != str:
+        if not isinstance(text, str):
             text = str(text)
 
-        char_tl, char_md, char_tr, char_sides, char_bl, char_br = str(char_tl), str(char_md), str(char_tr), str(char_sides), str(char_bl), str(char_br)
+        char_tl = str(char_tl)
+        char_md = str(char_md)
+        char_tr = str(char_tr)
+        char_sides = str(char_sides)
+        char_bl = str(char_bl)
+        char_br = str(char_br)
 
         qtd = len(text) + 4
         print(f'{char_tl}' + f'{char_md}' * qtd + f'{char_tr}')
@@ -67,13 +82,21 @@ class TextFormat():
         print(f'{char_sides} ' + ' ' * (qtd - 2) + f' {char_sides}')
         print(f'{char_bl}' + f'{char_md}' * qtd + f'{char_br}')
 
-    def text_print(self, texto: str, char_tl: str, char_md: str, char_tr: str, char_sides: str, char_bl: str, char_br: str) -> None:
+    def text_print(self,
+                   texto: str,
+                   char_tl: str,
+                   char_md: str,
+                   char_tr: str,
+                   char_sides: str,
+                   char_bl: str,
+                   char_br: str) -> None:
         """Imprime na tela o texto encapsulado no caractere desejado.
 
         Parâmetros
         -----------
         texto: :class:`str`
-            O texto a ser encapsulado e impresso. Pode ser utilizadas docstrings `'''texto'''` para enviar múltiplas linhas.
+            O texto a ser encapsulado e impresso. Pode ser utilizadas docstrings
+            `'''texto'''` para enviar múltiplas linhas.
         char_tl: :class:`str`
             O caractere a ser utilizado no topo esquerdo.
             Ex: `╔`

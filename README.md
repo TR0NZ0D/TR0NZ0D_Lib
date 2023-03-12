@@ -1,5 +1,8 @@
 # TR0NZ0D Lib
 
+[![Pylint](https://github.com/TR0NZ0D/TR0NZ0D_Lib/actions/workflows/pylint.yml/badge.svg?branch=main)](https://github.com/TR0NZ0D/TR0NZ0D_Lib/actions/workflows/pylint.yml)
+[![CodeQL](https://github.com/TR0NZ0D/TR0NZ0D_Lib/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)](https://github.com/TR0NZ0D/TR0NZ0D_Lib/actions/workflows/github-code-scanning/codeql)
+
 ***
 
 ## O que é?
@@ -10,9 +13,7 @@ O idioma principal da biblioteca é português, traduções serão adicionadas n
 
 ## Documentação
 
-* [Português*](https://tr0nz0d.github.io/pages/projetos/projeto/libs/docs/lib-index.html)
-
-*Documentação está em processo de migração para o novo domínio, é possível que fique instável e desatualizada por um período de tempo.
+* [Português](https://tr0nz0d.com/docs/tr0nz0d-lib-python-library/)
 
 ## Módulos existentes
 

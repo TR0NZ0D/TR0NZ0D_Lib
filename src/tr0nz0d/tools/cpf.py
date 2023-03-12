@@ -22,6 +22,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
+
+Created by: Gabriel Menezes de Antonio (TR0NZ0D)
 """
 
 from random import randint
@@ -34,6 +36,7 @@ def _apenas_numeros(cpf):
 
 
 class CPF:
+    """CPF Tools"""
     def gerar(self) -> str:
         """Gera um CPF aleatório.
 
@@ -124,8 +127,8 @@ class CPF:
 
         if not cpf.isnumeric() or len(str(cpf)) != 11:
             return False
-        else:
-            cpf_original = cpf[:-2]
+
+        cpf_original = cpf[:-2]
         novo_cpf = ''
         digito1 = 0
         digito2 = 0
@@ -160,7 +163,4 @@ class CPF:
 
         sequencia = novo_cpf == str(novo_cpf[0]) * len(cpf)
 
-        if cpf == novo_cpf and not sequencia:
-            return True
-        else:
-            return False
+        return cpf == novo_cpf and not sequencia

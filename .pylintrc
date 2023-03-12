@@ -47,7 +47,13 @@ fail-under=9
 
 # Files or directories to be skipped. They should be base names, not paths.
 ignore=CVS,
-       requirements.txt
+       requirements.txt,
+       CHANGELOG.md,
+       LICENSE,
+       MANIFEST.IN,
+       pyproject.toml,
+       README.md,
+       venv
 
 # Add files or directories matching the regular expressions patterns to the
 # ignore-list. The regex matches against paths and can be in Posix or Windows
@@ -428,6 +434,10 @@ disable=raw-checker-failed,
         too-many-locals,
         too-many-branches,
         too-many-statements,
+        too-many-arguments,
+        too-many-boolean-expressions,
+        too-many-lines,
+        too-many-public-methods,
         E1101,
         E1103,
         R0911,

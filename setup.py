@@ -1,5 +1,33 @@
-from setuptools import setup, find_packages
+# -*- coding: utf-8 -*-
+
+"""
+The MIT License (MIT)
+
+Copyright (c) 2015-2020 Rapptz
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+Created by: Gabriel Menezes de Antonio (TR0NZ0D)
+"""
 import pathlib
+
+from setuptools import find_packages, setup  # type: ignore
 
 BASE_DIR = pathlib.Path(__file__).parent.resolve()
 
@@ -46,7 +74,7 @@ setup(
         "Source": "https://github.com/TR0NZ0D/TR0NZ0D_Lib",
         "Project Info": "https://tr0nz0d.com/projetos/tr0nz0d-lib-python-library",
         "Bug Tracker": "https://github.com/TR0NZ0D/TR0NZ0D_Lib/issues",
-        "Documentation (PT-BR)": "https://tr0nz0d.github.io/pages/projetos/projeto/libs/docs/lib-index.html",
-        "Change Log (PT-BR)": "https://tr0nz0d.github.io/pages/projetos/projeto/libs/docs/pages/changelog.html"
+        "Documentation (PT-BR)": "https://tr0nz0d.com/docs/tr0nz0d-lib-python-library/",
+        "Change Log (PT-BR)": "https://tr0nz0d.com/docs/changes/tr0nz0d-lib-python-library/"
     }
 )

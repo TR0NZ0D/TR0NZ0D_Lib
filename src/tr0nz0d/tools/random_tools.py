@@ -22,13 +22,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
+
+Created by: Gabriel Menezes de Antonio (TR0NZ0D)
 """
 
 from random import randint
-from typing import List, Any, Optional
+from typing import Any, List, Optional
 
 
 class RandomTools:
+    """Random tools"""
     def random_pick(self, choices: List[Any]) -> Optional[Any]:
         """ Picks a random item from the passed list
 
@@ -41,5 +44,7 @@ class RandomTools:
         try:
             random_index = randint(0, len(choices) - 1 if len(choices) > 0 else 0)
             return choices[random_index]
-        except Exception:
+        except IndexError:
+            return None
+        except ValueError:
             return None

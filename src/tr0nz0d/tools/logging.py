@@ -22,11 +22,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
+
+Created by: Gabriel Menezes de Antonio (TR0NZ0D)
 """
 
 import logging
-from typing import Any
 from enum import Enum
+from typing import Any
 
 
 class LoggingLevels(Enum):
@@ -42,6 +44,7 @@ class LoggingLevels(Enum):
 
 
 class Log:
+    """Logger main class"""
     class __Formatter(logging.Formatter):
         grey: str = "\x1b[38;20m"
         bold_grey: str = "\x1b[30;1m"
