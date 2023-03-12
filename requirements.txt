@@ -8,7 +8,7 @@ charset-normalizer==2.1.1
 commonmark==0.9.1
 cryptography==39.0.1
 docutils==0.19
-flake8==5.0.4
+flake8==6.0.0
 idna==3.4
 imagesize==1.4.1
 importlib-metadata==6.0.0
