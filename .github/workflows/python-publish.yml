@@ -16,39 +16,81 @@ permissions:
   contents: read
 
 jobs:
-  build-n-publish:
-    name: Build Lib and publish to PyPI
+  pylint:
+    name: Pylint validation
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        python-version: "3.x"
-
+        python-version: ["3.10.x"]
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-
-    - name: Install dependencies
+    - name: Install Dependencies
       run: |
-        python -m pip install --upgrade pip setuptools wheel
+        python -m pip install --upgrade pip setuptools wheel pylint
         pip install --upgrade -r requirements.txt
+    - name: Analysing the code with pylint
+      run: |
+        pylint --rcfile .pylintrc $(git ls-files '*.py')
 
-    - name: Update sdist
-      run: python setup.py sdist
+  test:
+    name: QA Testing
+    runs-on: ubuntu-latest
 
-    - name: Build package
-      run: python -m build
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
 
-    - name: Checking distribution files
-      run: twine check dist/*
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          pip install --upgrade -r requirements.txt
 
-    - name: Publish package to PyPI
-      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
-      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
-      with:
-        user: __token__
-        password: ${{ secrets.PYPI_TOKEN }}
-        verbose: true
+      - name: Test with unittest
+        env:
+          webhook_url: ${{ secrets.DISCORD_UNITTESTS_WEBHOOK }}
+        run: python -m unittest
+        working-directory: "src/"
+
+  build-n-publish:
+    name: Build package and publish to PyPI
+    needs: [pylint, test]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          pip install --upgrade -r requirements.txt
+
+      - name: Checking configurations
+        run: python setup.py check
+
+      - name: Update sdist
+        run: python setup.py sdist
+
+      - name: Build package
+        run: python -m build
+
+      - name: Checking distribution files
+        run: twine check dist/*
+
+      - name: Publish package to PyPI
+        if: startsWith(github.ref, 'refs/tags')
+        uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_TOKEN }}
+          verbose: true

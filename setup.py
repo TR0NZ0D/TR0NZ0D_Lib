@@ -41,11 +41,11 @@ requirements = [
 
 setup(
     name='tr0nz0d',
-    version='0.1.4',
+    version="0.1.5",
     description="TR0NZ0D Lib is a library created in python to facilitate the use of some tools.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url='https://github.com/TR0NZ0D/TR0NZ0D_Lib',
+    url='https://tr0nz0d.com/',
     author='Gabriel Menezes de Antonio',
     author_email='tr0nz0d@tr0nz0d.com',
     classifiers=[

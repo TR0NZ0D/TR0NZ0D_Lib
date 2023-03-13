@@ -2,6 +2,8 @@
 
 [![Pylint](https://github.com/TR0NZ0D/TR0NZ0D_Lib/actions/workflows/pylint.yml/badge.svg?branch=main)](https://github.com/TR0NZ0D/TR0NZ0D_Lib/actions/workflows/pylint.yml)
 [![CodeQL](https://github.com/TR0NZ0D/TR0NZ0D_Lib/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)](https://github.com/TR0NZ0D/TR0NZ0D_Lib/actions/workflows/github-code-scanning/codeql)
+[![Unittest QA](https://github.com/TR0NZ0D/TR0NZ0D_Lib/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/TR0NZ0D/TR0NZ0D_Lib/actions/workflows/python-app.yml)
+[![Upload Package to PyPI](https://github.com/TR0NZ0D/TR0NZ0D_Lib/actions/workflows/python-publish.yml/badge.svg)](https://github.com/TR0NZ0D/TR0NZ0D_Lib/actions/workflows/python-publish.yml)
 
 ***
 
