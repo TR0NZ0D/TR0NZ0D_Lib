@@ -41,15 +41,14 @@ requirements = [
 
 setup(
     name='tr0nz0d',
-    version="0.1.5",
+    version="0.1.6",
     description="TR0NZ0D Lib is a library created in python to facilitate the use of some tools.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url='https://tr0nz0d.com/',
     author='Gabriel Menezes de Antonio',
-    author_email='tr0nz0d@tr0nz0d.com',
     classifiers=[
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Development Status :: 4 - Beta",
@@ -72,9 +71,6 @@ setup(
     license="MIT",
     project_urls={
         "Source": "https://github.com/TR0NZ0D/TR0NZ0D_Lib",
-        "Project Info": "https://tr0nz0d.com/projetos/tr0nz0d-lib-python-library",
-        "Bug Tracker": "https://github.com/TR0NZ0D/TR0NZ0D_Lib/issues",
-        "Documentation (PT-BR)": "https://tr0nz0d.com/docs/tr0nz0d-lib-python-library/",
-        "Change Log (PT-BR)": "https://tr0nz0d.com/docs/changes/tr0nz0d-lib-python-library/"
+        "Bug Tracker": "https://github.com/TR0NZ0D/TR0NZ0D_Lib/issues"
     }
 )

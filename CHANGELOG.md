@@ -2,7 +2,9 @@
 
 ***
 
-[Log de mudanças das versões [pt-br]*](https://tr0nz0d.com/docs/changes/tr0nz0d-lib-python-library/)
+Website fora do ar por tempo indeterminado devido a financiamento de hospedagem.
+
+Atualizações de dependências e segurança
 
 ***
 

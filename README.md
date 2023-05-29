@@ -15,7 +15,7 @@ O idioma principal da biblioteca é português, traduções serão adicionadas n
 
 ## Documentação
 
-* [Português](https://tr0nz0d.com/docs/tr0nz0d-lib-python-library/)
+Website fora do ar por tempo indeterminado devido a financiamento de hospedagem.
 
 ## Módulos existentes
 

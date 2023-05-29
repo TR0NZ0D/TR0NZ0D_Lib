@@ -17,7 +17,7 @@ __title__ = 'tr0nz0d'
 __author__ = 'TR0NZ0D'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2021 TR0NZ0D'
-__version__ = "0.1.5"
+__version__ = "0.1.6"
 
 __path__ = __import__('pkgutil').extend_path(__path__, __name__)
 
